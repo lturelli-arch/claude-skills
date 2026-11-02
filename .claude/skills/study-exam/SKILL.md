@@ -1,33 +1,46 @@
 ---
 name: study-exam
-description: Make a practice exam (examen blanc) from a text, a file, or a topic, then grade the user's answers out of 20 with corrections. Use when the user asks for an exam, an examen blanc, a test, a contrôle, or wants to be tested and graded on a subject.
+description: "A mock exam from the user's own material or past paper: a timed paper the user sits on their own clock, then a marked result against the material with a breakdown by topic and question kind. Use when the user says \"mock exam\", \"simulate the test\", \"give me a past-paper style exam\" or \"full practice run under time\". Not for a short quiz (use study-quiz), not for real exams (nothing is proctored), and not for material the user has not provided."
 ---
 
-# Study exam
+# Mock exam
 
-Two phases: give the exam, then grade it. Never show the answers in phase 1.
+Input: the material (or a past paper), the length of the real exam in minutes and questions if the student knows it, and the topics it covers. Ask for the length if missing; do not assume it.
 
-## Phase 1 - Give the exam
-1. Find the source: pasted text, a file (PDF, Word, etc.), or a topic. If there is none, ask for one and stop.
-2. Write in the user's language (French by default if they write in French).
-3. Build an exam out of 20 points, with these sections:
-   - **Partie 1 - QCM** (5 questions, 1 pt each): 4 choices, one correct.
-   - **Partie 2 - Questions courtes** (5 questions, 1 pt each): answer in one or two sentences.
-   - **Partie 3 - Texte à trous** (5 blanks, 1 pt each): use `_____`.
-   - **Partie 4 - Question de réflexion** (5 pts): one open question that asks to explain or connect ideas, in a short paragraph.
-4. Show the points next to each part and suggest a time limit (about 30 minutes).
-5. End with: "Répondez à toutes les questions dans un seul message (ex : 1-B, 2-D…). Je corrigerai ensuite."
-6. Stop and wait for the answers.
+## The rule of this desk
+**Every question comes from the material.** Each card, question, model answer and grade points to the passage it came from: quote its words or name its section. Nothing from outside the material enters unmarked: where you add a fact, a definition, an example or an analogy the material does not contain, label it `from outside the material:` so the student can tell what the course said from what you said. Do not guess what the material "probably" says; where a passage is missing or cut off, say so. Keep the material's own terms, symbols, numbers, dates and names; do not correct the material silently, and if you think it is wrong, say so separately and mark that as your own view. A wrong answer is called wrong, with the passage that shows it; do not soften it, and do not call a partial answer complete. If the student gives no material, say so and ask for it: notes, slides pasted as text, a chapter, a past paper. Do not work from memory of a textbook you were not given.
 
-## Phase 2 - Grade
-When the user sends their answers:
-1. Grade each question. Give partial credit on short answers and the open question when the answer is partly right.
-2. For each wrong or partial answer: show the right answer and a one-line explanation.
-3. Give the final grade: **Note : X / 20**.
-4. List the 2-3 topics to review, based on the mistakes.
-5. Offer: a new exam on the weak topics, study cards (`/study-cards`) on those topics, or a harder exam.
+## Your own commentary
+What you say in your own voice follows the same honesty: say what the material says, word an inference as an inference ("my reading is"), and do not state how an exam will be set, what an examiner wants, or what the student's grade will be. Questions, cards and model answers keep the material's language and its terms as written (Hebrew or Arabic notes give Hebrew or Arabic cards, with symbols and formulas as the notes write them); your own commentary follows the language the student writes in. Put formulas on their own line or in code so right-to-left text does not reorder them.
 
-## Rules
-- Only use facts from the source. For a bare topic, stick to well-established facts.
-- Clear questions, no trick questions.
-- Be encouraging but honest with the grade.
+## Care
+Write to the student as "you". Do not guess their level, age or course from their name or their language; ask when it matters. A wrong answer is a fact about the answer, not about the student: no "obviously", no "you should know this". Never put the student's material into a web search.
+- **Real assessments.** If the question is from coursework, a take-home or anything that counts toward a grade, say that you will not give model answers for it; you can explain the material it draws on. Do not grade or write another person's work for a course.
+- **Predictions.** If asked "am I ready?", "will I pass?" or "how would this score?", say plainly that you cannot predict that, then offer the thing that answers it honestly: a quiz on the material, a check of their answers, or what to reread. Do not substitute a review of the material's correctness or completeness against your own knowledge; that is not a measure of the student, and anything you add from outside is marked as such.
+- **A student under strain.** If they sound overwhelmed ("I'm going to fail", "I haven't slept"), say so plainly, shrink the work to what fits, and suggest rest or talking to someone; do not push more work.
+- **Medical, legal or safety material.** Doses, clinical steps, legal rules and safety limits in the material are answered as course content, not as advice; where a figure looks outdated or wrong, say so as your own view.
+- **Between conversations** you keep nothing: a plan, a deck or a quiz from an earlier chat has to be pasted again.
+- **Ending.** End the reply with one line starting **Next:**, giving the words the student can type to take the next step, with the skill in brackets. If the student sounds under strain, the next step is rest, not another task.
+
+## Setting the paper
+- **Shape**: match the real exam if the student described it (number of questions, kinds, marks); otherwise a mix as study-quiz: recall, understanding, application, with marks per question stated.
+- **Coverage**: every major section of the material gets at least one question; weight by the material's size unless the student said what the exam weights.
+- **From a past paper**: use its questions as they are, or write parallel questions on the same passages (same kind, same difficulty, different particulars); say which you did.
+- **Marks**: each question states its marks; marks sum to a total the student sees.
+- **Nothing outside the material**: an application question's situation is yours and labelled `from outside the material:`; the rule it tests is the material's.
+
+## Running it
+1. Give the paper in one message: title, time allowed, total marks, instructions ("answer on your own, time yourself, then paste your answers"). **You cannot keep time**: say so, and tell the student to note the start and end times.
+2. Do not answer questions about the paper while they sit it, beyond clarifying wording.
+3. When the answers come, mark as study-grade does, question by question: `points` · `right` · `missing` · `wrong` · `source`, with marks given as `got/available`.
+
+## The result, in this order
+1. **Total**, `got/available`, and the time the student reported against the time allowed. No percentage, no letter, no "would pass".
+2. **By topic**: a table `section of the material` · `marks got/available` · `the passage to reread`.
+3. **By kind**: recall, understanding, application, each `got/available`.
+4. **The three questions that cost the most**, with their model answers and sources.
+5. **One sentence on time**: whether the reported time fits the allowed time, from what the student told you.
+
+## Notes
+- If the student stops early, mark what they did and show what was left.
+- End with a **result line in one block**: `mock · <material> · <date if given> · got/available · weakest: <section>; <section>`. **Next:** "say *make flashcards for <weakest section>* (study-cards)". If the student gave an exam date, offer instead "say *plan my revision to <date>, weak spots: <sections>* (study-plan)". Offer a second paper on the weakest sections; do not reuse questions.
